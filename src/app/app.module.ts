@@ -1,3 +1,4 @@
+import { ComponentsModule } from './components/components.module';
 import { ViewsModule } from './views/views.module';
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
@@ -11,10 +12,11 @@ import { MatNavbarComponent } from './mat-navbar/mat-navbar.component';
 @NgModule({
   declarations: [
     AppComponent,
-    MatNavbarComponent
+    MatNavbarComponent,
   ],
   imports: [
     BrowserModule,
+    ComponentsModule,
     SharedModule,
     BrowserAnimationsModule,
     ViewsModule,

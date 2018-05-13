@@ -1,0 +1,22 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Todo List</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <form [formGroup]="addForm">
+      <mat-form-field>
+        <input matInput formControlName="newItem" placeholder="Enter new item">
+      </mat-form-field>
+      <button class="app-button" mat-raised-button color="accent" (click)="addItem()" [disabled]="addForm.invalid" >Add new item</button>
+    </form>
+    <mat-list>
+      <ng-container *ngFor="let item of items">
+        <mat-list-item>
+          <mat-checkbox>{{item}}</mat-checkbox>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+      </ng-container>
+    </mat-list>
+  </mat-card-content>
+</mat-card>

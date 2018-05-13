@@ -1,23 +1,16 @@
-
 <mat-card>
   <mat-card-content>
     <h2>Componentes propios</h2>
-    <p>En este paso queremos</p>
+    <p>En este paso queremos cargar un componente que tenemos en nuestro módulo</p>
     <mat-card-actions>
-        <button class="app-button" 
-        mat-raised-button 
-        color="primary"
-        (click)="loadComponent()"
-        >Cargar componente</button>
-        <button class="app-button"
-        mat-raised-button 
-        color="primary"
-        (click)="loadComponentWithProperties()"
-        >Cargar componente con propiedades</button>
-    
-      </mat-card-actions>
-  
+      <button class="app-button" mat-raised-button color="primary" (click)="loadComponent()">Cargar componente</button>
+
+      <button class="app-button" mat-raised-button color="primary" (click)="loadComponentWithProperties()">Cargar componente con propiedades</button>
+
+    </mat-card-actions>
+
     <div #componentContainer class="component-contianer">
     </div>
+
   </mat-card-content>
 </mat-card>
