@@ -1,6 +1,6 @@
-# Componentes dinámicos
+# Dynamic Components
 
-## Versiones
+## Versions
 
 
 - Angular CLI: 6.0.1
@@ -9,8 +9,35 @@
 - Angular: 6.0.0
 - ... animations, common, compiler, compiler-cli, core, forms
 - ... http, platform-browser, platform-browser-dynamic, router
-- Material 6.0.1
+- ... material 6.0.1
 
 ## Info
-Proyecto para el meetup de componentes dinámicos. En cada tag de este repositorio encontraremos un paso de la charla. 
+Project for the [meetup](https://www.meetup.com/es-ES/Angular_Madrid/events/250537479/). of dynamic components. In each tag of this repository we will find a step of the talk.
+
+
+Installing and Running
+----
+
+Clone GitHub repo:
+
+```
+git clone https://github.com/kmikodev/dynamic-components.git
+```
+Create a config.js file using config.sample.js as a template. Fill in your Twitter App API Keys. You will need to [create a Twitter application](https://apps.twitter.com/).
+
+Install node module dependencies:
+
+```
+npm i 
+```
+
+Run application:
+
+```
+npm start
+```
+
+Go to [http://localhost:4200](http://localhost:4200) in your browser.
+
+
 
