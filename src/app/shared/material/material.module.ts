@@ -20,6 +20,7 @@ import {
   MatProgressBarModule,
   MatTabsModule,
   MatSlideToggleModule,
+  MatInputModule,
 } from '@angular/material';
 
 
@@ -46,6 +47,7 @@ import {
     MatProgressBarModule,
     MatTabsModule,
     MatSlideToggleModule,
+    MatInputModule,
   ],
   exports: [
     FormsModule,
@@ -69,6 +71,7 @@ import {
     MatProgressBarModule,
     MatTabsModule,
     MatSlideToggleModule,
+    MatInputModule,
   ],
   declarations: []
 })
