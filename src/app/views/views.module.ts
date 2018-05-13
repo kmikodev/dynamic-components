@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home/home.component';
 import { ExternalModuleComponent } from './external-module/external-module.component';
+import { RemoteModuleComponent } from './remote-module/remote-module.component';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { ExternalModuleComponent } from './external-module/external-module.compo
   declarations: [
     HomeComponent,
     TodoListComponent,
-    ExternalModuleComponent
+    ExternalModuleComponent,
+    RemoteModuleComponent
   ],
   exports: [
     HomeComponent

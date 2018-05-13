@@ -11,8 +11,8 @@ import {
 } from '@angular/core';
 
 import { Observable } from 'rxjs';
-import { of } from 'rxjs';
-import { from } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { from, fromEvent, of } from 'rxjs';
 
 const COMPONENT_ENTRY_POINT_TOKEN = 'COMPONENT_ENTRY_POINT';
 
@@ -28,7 +28,24 @@ export class RenderService {
     private injector: Injector,
     private appRef: ApplicationRef,
     private componentFactoryResolver: ComponentFactoryResolver,
+    private windowService: WindowService
   ) {
+  }
+  private isInHead(src): boolean {
+    return Array.from(this.windowService.window.document.getElementsByTagName('head')[0]
+      .getElementsByTagName('script')).find((s: any) => s.src === src) !== undefined;
+  }
+
+  private appendScript(src: String): Observable<any> {
+    const head = this.windowService.window.document.getElementsByTagName('head')[0];
+    const script = this.windowService.window.document.createElement('script');
+    if (this.isInHead(src)) {
+      return of({});
+    }
+    script.type = 'text/javascript';
+    script.src = src;
+    head.appendChild(script);
+    return fromEvent(script, 'load')
   }
 
   private getComponentRefFromComponent(component): ComponentRef<any> {
@@ -41,10 +58,10 @@ export class RenderService {
     const factory = await this.compiler.compileModuleAsync(dynamicModule);
     const moduleInstace = factory.create(this.injector);
     const componentType = moduleInstace.injector.get(COMPONENT_ENTRY_POINT_TOKEN);
-    const componentRef = moduleInstace.componentFactoryResolver
+    return moduleInstace.componentFactoryResolver
       .resolveComponentFactory(componentType)
       .create(this.injector);
-    return componentRef;
+
   }
 
   private getComponentNode(componentRef: ComponentRef<any>) {
@@ -63,6 +80,16 @@ export class RenderService {
       Object.assign(componentRef.instance, inputs);
     }
     this.addToView(componentRef, htmlNode);
+  }
+
+  public appendRemoteComp(src: string, windowItemKey: string, moduleName: string, htmlNode: HTMLElement, inputs: any = null) {
+    this.appendScript(src)
+      .subscribe(
+      async (none) => {
+        const module = this.windowService.window[windowItemKey][moduleName];
+        const componentRef = await this.getComponentFromLazyModule(module);
+        this.addToView(componentRef, htmlNode);
+      });
   }
 }
 

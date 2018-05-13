@@ -9,6 +9,17 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatNavbarComponent } from './mat-navbar/mat-navbar.component';
 
+
+import * as core from '@angular/core';
+import * as common from '@angular/common';
+import * as compiler from '@angular/compiler';
+import * as forms from '@angular/forms';
+import * as material from '@angular/material';
+import * as checkbox from '@angular/material/checkbox';
+import * as platformBrowser from '@angular/platform-browser';
+import * as platformBrowserDynamic from '@angular/platform-browser-dynamic';
+import * as Rx from 'rxjs';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,4 +36,17 @@ import { MatNavbarComponent } from './mat-navbar/mat-navbar.component';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+  constructor() {
+    self['ng']['core'] = core;
+    self['ng']['common'] = common;
+    self['ng']['compiler'] = compiler;
+    self['ng']['forms'] = forms;
+    self['ng']['material'] = material;
+    self['ng']['material']['checkbox'] = checkbox;
+    self['ng']['platformBrowser'] = platformBrowser;
+    self['ng']['platformBrowserDynamic'] = platformBrowserDynamic;
+    self['Rx'] = Rx;
+  }
+ }

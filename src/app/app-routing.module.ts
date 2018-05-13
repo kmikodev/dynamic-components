@@ -1,3 +1,4 @@
+import { RemoteModuleComponent } from './views/remote-module/remote-module.component';
 import { ExternalModuleComponent } from './views/external-module/external-module.component';
 import { HomeComponent } from './views/home/home.component';
 import { RouterModule } from '@angular/router';
@@ -11,7 +12,8 @@ export const ROUTES = [
     pathMatch: 'full'
   },
   { path: 'home', component: HomeComponent },
-  { path: 'external', component: ExternalModuleComponent}
+  { path: 'external', component: ExternalModuleComponent },
+  { path: 'remote', component: RemoteModuleComponent }
 ];
 
 @NgModule({
