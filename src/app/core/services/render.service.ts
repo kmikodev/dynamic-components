@@ -61,7 +61,6 @@ export class RenderService {
     return moduleInstace.componentFactoryResolver
       .resolveComponentFactory(componentType)
       .create(this.injector);
-
   }
 
   private getComponentNode(componentRef: ComponentRef<any>) {
