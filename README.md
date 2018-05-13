@@ -1,4 +1,4 @@
-# Dynamic Components
+# Componentes dinámicos
 
 ## Versiones
 
