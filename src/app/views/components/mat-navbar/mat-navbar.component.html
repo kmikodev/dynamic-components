@@ -1,0 +1,52 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport="true" [attr.role]="isHandset ? 'dialog' : 'navigation'" [mode]="(isHandset | async)!.matches ? 'over' : 'side'"
+    [opened]="!(isHandset | async)!.matches">
+    <mat-toolbar color="primary">Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item [routerLink]="['/admin/home']">Utilidades generales</a>
+      <a mat-list-item [routerLink]="['/admin/remote']">Componente Remoto</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary" fxLayout="row" fxLayoutAlign="start center">
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>Jerry Interplanetar Tool</span>
+
+      <span fxFlex></span>
+
+      <button mat-icon-button [matMenuTriggerFor]="matmenu">
+          <mat-icon>public</mat-icon>
+      </button>
+      <a mat-icon-button routerLinkActive="active" routerLink="/login">
+          <mat-icon>power_settings_new</mat-icon>
+      </a>
+      <mat-menu #matmenu="matMenu">
+        <button mat-menu-item (click)="changeLocation('earth')">
+              <mat-icon>flag</mat-icon>
+              <span>
+                  Tierra Universo C - 137
+              </span>
+          </button>
+        <button mat-menu-item (click)="changeLocation('gear')">
+              <mat-icon>settings</mat-icon>
+              <span>
+                  Gear Wars
+              </span>
+          </button>
+        <button mat-menu-item (click)="changeLocation('pluton')">
+              <mat-icon>flag</mat-icon>
+              <span>
+                  Plutón
+              </span>
+          </button>
+
+      </mat-menu>
+
+    </mat-toolbar>
+
+    <router-outlet></router-outlet>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>

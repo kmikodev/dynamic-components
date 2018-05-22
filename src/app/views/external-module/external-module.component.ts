@@ -9,16 +9,16 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 })
 export class ExternalModuleComponent implements OnInit {
   @ViewChild('componentContainer') componentContainer: ElementRef;
-  
-    constructor(
-      private renderService: RenderService
-    ) { }
-  
-    ngOnInit() {
-    }
-    
-    loadExternalModuleComponent() {
-      this.renderService.appendOwnComp(DrawZoneComponent, this.componentContainer.nativeElement);
-    }
+  private src = 'https://cdn.rawgit.com/kmikodev/contact-list/master/contact-list/bundles/contact-list.umd.min.js';
+  constructor(
+    private renderService: RenderService
+  ) { }
+
+  ngOnInit() {
   }
-  
+
+  loadComponent() {
+    this.renderService.appendRemoteComp(this.src, 'contact-list', 'ContactListModule', this.componentContainer.nativeElement);
+  }
+
+}

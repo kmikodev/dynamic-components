@@ -1,0 +1,24 @@
+<div class="planet-data">
+  <mat-card class="card" *ngIf="gas">
+    <mat-card-header>
+      <div mat-card-avatar class="header-image"></div>
+      <mat-card-title>Nombre: {{ gas?.gas | json }}</mat-card-title>
+      <mat-card-subtitle>Es tóxico : {{ isToxic }} </mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image [src]="'assets/'+gas?.pic" [alt]="gas?.symbol" class="">
+    <mat-card-content>
+      <div style="display: block">
+        <canvas mdbChart 
+            [chartType]="chartType"
+            [datasets]="chartDatasets" 
+            [labels]="chartLabels"
+            [colors]="chartColors"
+            [options]="chartOptions"
+            [legend]="true"
+            (chartHover)="chartHovered($event)" 
+            (chartClick)="chartClicked($event)">
+        </canvas>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

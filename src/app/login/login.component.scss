@@ -1,0 +1,40 @@
+
+.main {
+  background-image: url("./../../assets/login.jpg");
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  mat-card {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      /* bring your own prefixes */
+      transform: translate(-50%, -50%);
+      background: none;
+      color:white;
+  }
+  .spinner {
+    background-image: url("./../../assets/portal.gif");
+    position: fixed;
+    width: 500px;
+    height: 500px;
+    z-index: 0;
+    left: calc(50% - 250px);
+    top: calc(50vh - 250px);
+  }
+    
+    
+}
+
+@media (min-width: 1200px) {
+  .main {
+    .form-login {
+      width: 26%;
+      left: 37%;
+    }
+  }
+}

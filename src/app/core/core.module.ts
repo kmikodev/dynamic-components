@@ -1,3 +1,4 @@
+import { GuardGuard } from './guard.guard';
 import { RenderService } from './services/render.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -8,7 +9,8 @@ import { CommonModule } from '@angular/common';
   ],
   declarations: [],
   providers:[
-    RenderService
+    RenderService,
+    GuardGuard
   ]
 })
 export class CoreModule { }

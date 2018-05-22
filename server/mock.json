@@ -1,0 +1,136 @@
+{
+  "login": {
+    "user": "sanchez",
+    "name": "Rick",
+    "lastname": "Sanchez",
+    "specie": "humano",
+    "sex": "masculino",
+    "status": "vivo",
+    "pic": "Rick.png",
+    "age": "70",
+    "job": "Científico"
+  },
+  "contacts": [
+    {
+      "user": "morty137",
+      "name": "Morty",
+      "lastname": "Smith",
+      "specie": "humano",
+      "sex": "masculino",
+      "status": "vivo",
+      "pic": "Morty_Smith.png",
+      "age": "14",
+      "job": "Estudiante"
+    },
+    {
+      "user": "beth",
+      "name": "Beth",
+      "lastname": "Smith",
+      "specie": "humano",
+      "sex": "femenino",
+      "status": "vivo",
+      "pic": "Beth_Smith.png",
+      "age": "34",
+      "job": "Cirujana de caballos"
+    },
+    {
+      "user": "sumer",
+      "name": "Sumer",
+      "lastname": "Smith",
+      "specie": "humano",
+      "sex": "femenino",
+      "status": "vivo",
+      "pic": "Summer.png",
+      "age": "17",
+      "job": "Estudiante"
+    },
+    {
+      "user": "jerry",
+      "name": "Jerry",
+      "lastname": "Smith",
+      "specie": "humano",
+      "sex": "masculino",
+      "status": "vivo",
+      "pic": "Jerry_Smith.png",
+      "age": "35",
+      "job": "Desempleado"
+    },
+    {
+      "user": "birdperson",
+      "name": "Personapájaro",
+      "lastname": "",
+      "specie": "Persona Pájaro",
+      "sex": "masculino",
+      "status": "vivo",
+      "pic": "BirdpersonTransparent.png",
+      "age": "35",
+      "job": ""
+    },
+    {
+      "user": "mr.poopy",
+      "name": "Ojete",
+      "lastname": "Sucio",
+      "specie": "Ojetes Sucios",
+      "sex": "masculino",
+      "status": "vivo",
+      "pic": "Sr_pantalones_de_popo.png",
+      "age": "",
+      "job": ""
+    }
+  ],
+  "measurements": [
+    {
+      "gas": "Nitrógeno",
+      "symbol": "n2",
+      "pic": "n2.png",
+      "toxicAfter": 45,
+      "minRnd":10,
+      "maxRnd":60,
+      "isToxic": true
+    },
+    {
+      "gas": "Oxígeno",
+      "pic": "o2.png",
+      "symbol": "o2",
+      "toxicAfter": 99.99,
+      "minRnd":60,
+      "maxRnd":80,
+      "isToxic": false
+    },
+    {
+      "gas": "Helio",
+      "pic": "he.png",
+      "symbol": "he",
+      "toxicAfter": 60,
+      "minRnd":40,
+      "maxRnd":90,
+      "isToxic": false
+    }
+  ],
+  "planets": [
+    {
+      "key": "earth",
+      "atmosphere":"o2",
+      "universe": "C 137",
+      "name": "Tierra C 137",
+      "pic": "earth.gif",
+      "description": "La Tierra (del latín Terra,​ deidad romana equivalente a Gea, diosa griega de la feminidad y la fecundidad) es un planeta del sistema solar que gira alrededor de su estrella —el Sol— en la tercera órbita más interna. Es el más denso y el quinto mayor de los ocho planetas del sistema solar. También es el mayor de los cuatro terrestres o rocoso"
+    },
+    {
+      "key": "gear",
+      "atmosphere":"he",
+      "universe": "C 137",
+      "name": "Gear Wars",
+      "pic": "gear.gif",
+      "description": "Gear World es un planeta ubicado en Gear System. Es el hogar de Gearhead y otras personas de Gear, y es parte de la Federación Galáctica."
+    },
+    {
+      "key": "pluton",
+      "atmosphere":"n2",
+      "universe": "C 137",
+      "name": "pluton",
+      "pic": "pluton.gif",
+      "description": "Plutón, designado 134340 Pluto, es un planeta enano del sistema solar situado a continuación de la órbita de Neptuno. Su nombre se debe al dios mitológico romano Plutón (Hades según los griegos). En la Asamblea General de la Unión Astronómica Internacional (UAI) celebrada en Praga el 24 de agosto de 2006 se creó una nueva categoría llamada plutoide, en la que se incluye a Plutón"
+    }
+  ]
+}

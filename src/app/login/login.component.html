@@ -1,0 +1,38 @@
+<div class="main">
+  
+  
+    <div class="container-fluid h-100">
+     <div [@loadingState]="loading ? 'active' : 'inactive'" class="spinner"></div>
+      <div class="row h-100">
+
+        <div class="col text-center">
+          <mat-card class="form-card">
+            <mat-card-content>
+              <form class="form-form">
+                <table class="form-full-width" cellspacing="0">
+                  <tr>
+                    <td>
+                      <mat-form-field class="form-full-width">
+                        <input matInput placeholder="Username" [(ngModel)]="model.username" name="username" required>
+                      </mat-form-field>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <mat-form-field class="form-full-width">
+                        <input matInput placeholder="Password" [(ngModel)]="model.password" type="password" name="password" required>
+                      </mat-form-field>
+                    </td>
+                  </tr>
+                </table>
+              </form>
+             
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-raised-button (click)="login()" color="primary">Login</button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>

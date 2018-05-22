@@ -1,15 +1,23 @@
 <mat-card>
-  <mat-card-content>
-    <h2>Componentes propios</h2>
-    <p>En este paso queremos cargar un componente que tenemos en nuestro módulo</p>
-    <mat-card-actions>
-      <button class="app-button" mat-raised-button color="primary" (click)="loadComponent()">Cargar componente</button>
+  <mat-card-content class="container">
+    <h2>Utilidades generales</h2>
+    <p>En este apartado veremos utilidades generales (componentes de este módulo)</p>
 
-      <button class="app-button" mat-raised-button color="primary" (click)="loadComponentWithProperties()">Cargar componente con propiedades</button>
+    <mat-card-actions>
+
+      <button class="app-button" mat-raised-button color="primary" (click)="loadPlanetData()">Planet Data</button>
+
+      <button class="app-button" mat-raised-button color="primary" (click)="loadMeasurent()">Medidas</button>
+
+      <button class="app-button" mat-raised-button color="primary" (click)="loadTodoList()">Añadir lista de tareas</button>
+
+      <button class="app-button" mat-raised-button color="primary" (click)="loadSigned()">Firmar y descargar</button>
 
     </mat-card-actions>
-
-    <div #componentContainer class="component-contianer">
+    <!-- <app-planet-measurent></app-planet-measurent> -->
+    <!-- <app-contact-list></app-contact-list> -->
+    <div #componentContainer>
     </div>
+
   </mat-card-content>
 </mat-card>

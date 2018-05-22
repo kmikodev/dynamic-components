@@ -1,3 +1,4 @@
+import { CoreModule } from './core/core.module';
 import { ComponentsModule } from './components/components.module';
 import { ViewsModule } from './views/views.module';
 import { AppRoutingModule } from './app-routing.module';
@@ -7,8 +8,6 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatNavbarComponent } from './mat-navbar/mat-navbar.component';
-
 
 import * as core from '@angular/core';
 import * as common from '@angular/common';
@@ -19,11 +18,12 @@ import * as checkbox from '@angular/material/checkbox';
 import * as platformBrowser from '@angular/platform-browser';
 import * as platformBrowserDynamic from '@angular/platform-browser-dynamic';
 import * as Rx from 'rxjs';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MatNavbarComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,7 +31,8 @@ import * as Rx from 'rxjs';
     SharedModule,
     BrowserAnimationsModule,
     ViewsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    CoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,15 @@
+<div class="planet-data">
+  <mat-card class="card" *ngIf="planet">
+    <mat-card-header>
+      <div mat-card-avatar class="header-image"></div>
+      <mat-card-title>Planeta: {{ planet?.name }}</mat-card-title>
+      <mat-card-subtitle>Universo : {{ planet?.universe }} </mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image [src]="'assets/'+planet?.pic" [alt]="planet?.keys">
+    <mat-card-content>
+      <p>
+        {{ planet?.description}}
+      </p>
+    </mat-card-content>
+  </mat-card>
+</div>
