@@ -38,10 +38,22 @@ export class RenderService {
     private windowService: WindowService
   ) { }
 
-  private getComponentRefFromComponent<T>(component: Type<T>): ComponentRef<T> {
+  private getComponentRefFromComponentType<T>(component: Type<T>): ComponentRef<T> {
     return this.componentFactoryResolver
       .resolveComponentFactory(component)
       .create(this.injector);
+  }
+
+  public appendOwnComp<T>(component: Type<T>, htmlNode: HTMLElement, properties: any = null) {
+    // Obtiene un componentRef mediante el componentFactoryResolver de angular
+    const componentRef: ComponentRef<T> = this.getComponentRefFromComponentType(component);
+
+    // Añade todas propiedades públicas al component ref
+    if (properties) {
+      Object.assign(componentRef.instance, properties);
+    }
+    // Agrega el componente a la vista
+    this.addToView(componentRef, htmlNode);
   }
 
   private addToView<T>(componentRef: ComponentRef<T>, htmlNode: HTMLElement) {
@@ -54,19 +66,9 @@ export class RenderService {
     htmlNode.appendChild(div);
   }
 
-  public appendOwnComp<T>(component: Type<T>, htmlNode: HTMLElement, properties: any = null) {
-    // Obtiene un componentRef mediante el componentFactoryResolver de angular
-    const componentRef: ComponentRef<T> = this.getComponentRefFromComponent(component);
-
-    // Añade todas propiedades públicas al component ref
-    if (properties) {
-      Object.assign(componentRef.instance, properties);
-    }
-    // Agrega el componente a la vista
-    this.addToView(componentRef, htmlNode);
+  private getComponentNode(componentRef: ComponentRef<any>) {
+    return (componentRef.hostView as EmbeddedViewRef<any>).rootNodes[0] as HTMLElement;
   }
-
-  // ....
 
 
 
@@ -96,11 +98,6 @@ export class RenderService {
       .create(this.injector);
   }
 
-  private getComponentNode(componentRef: ComponentRef<any>) {
-
-    return (componentRef.hostView as EmbeddedViewRef<any>).rootNodes[0] as HTMLElement;
-  }
-
   public appendRemoteComp(src: string, windowItemKey: string, moduleName: string, htmlNode: HTMLElement, properties: any = null) {
     this.appendScript(src)
       .subscribe(
@@ -111,4 +108,3 @@ export class RenderService {
       });
   }
 }
-

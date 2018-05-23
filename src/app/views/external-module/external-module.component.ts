@@ -9,7 +9,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 })
 export class ExternalModuleComponent implements OnInit {
   @ViewChild('componentContainer') componentContainer: ElementRef;
-  private src = 'https://cdn.rawgit.com/kmikodev/contact-list/master/contact-list/bundles/contact-list.umd.min.js';
+  private src = 'https://cdn.rawgit.com/kmikodev/contact-list/master/contact-list/bundles/contact-list.umd2.min.js';
   constructor(
     private renderService: RenderService
   ) { }

@@ -1,6 +1,7 @@
 import { LocationService } from './../../../shared/services/location.service';
 import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
 
+
 @Component({
   selector: 'app-planet-data',
   templateUrl: './planet-data.component.html',
