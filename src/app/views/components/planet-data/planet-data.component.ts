@@ -6,7 +6,7 @@ import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
   selector: 'app-planet-data',
   templateUrl: './planet-data.component.html',
   styleUrls: ['./planet-data.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  // encapsulation: ViewEncapsulation.None
 })
 export class PlanetDataComponent implements OnInit {
 

@@ -1,6 +1,6 @@
 import { DrawZoneComponent } from './../../components/draw-zone/draw-zone.component';
 import { RenderService } from './../../core/services/render.service';
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, ViewContainerRef } from '@angular/core';
 
 @Component({
   selector: 'app-external-module',
@@ -8,7 +8,12 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
   styleUrls: ['./external-module.component.scss']
 })
 export class ExternalModuleComponent implements OnInit {
-  @ViewChild('componentContainer') componentContainer: ElementRef;
+  
+ 
+  @ViewChild('componentContainer', {
+    read: ViewContainerRef
+  }) componentContainer: ViewContainerRef;
+
   private src = 'https://cdn.rawgit.com/kmikodev/contact-list/master/contact-list/bundles/contact-list.umd2.min.js';
   constructor(
     private renderService: RenderService
@@ -18,7 +23,7 @@ export class ExternalModuleComponent implements OnInit {
   }
 
   loadComponent() {
-    this.renderService.appendRemoteComponent(this.src, 'contact-list', 'ContactListModule', this.componentContainer.nativeElement);
+    this.renderService.appendRemoteComponent(this.src, 'contact-list', 'ContactListModule', this.componentContainer);
   }
 
 }

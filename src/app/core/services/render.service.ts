@@ -9,7 +9,8 @@ import {
   Injector,
   NgModuleFactory,
   Type,
-  NgModuleRef
+  NgModuleRef,
+  ViewContainerRef
 } from '@angular/core';
 
 import { Observable } from 'rxjs';
@@ -28,18 +29,17 @@ export class RenderService {
   constructor(
     private compiler: Compiler,
     private injector: Injector,
-    private appRef: ApplicationRef,
     private componentFactoryResolver: ComponentFactoryResolver,
     private windowService: WindowService
   ) { }
 
-  public appendRemoteComponent(src: string, windowItemKey: string, moduleName: string, domNode: HTMLElement, properties: any = null) {
+  public appendRemoteComponent(src: string, windowItemKey: string, moduleName: string, viewContainerRef: ViewContainerRef, properties: any = null) {
     this.appendScript(src)
       .subscribe(
       async (none) => {
         const dynamicModule = this.windowService.window[windowItemKey][moduleName];
         const componentRef = await this.getComponentRefFromLazyModule(dynamicModule);
-        this.addToView(componentRef, domNode);
+        this.addToView(componentRef, viewContainerRef);
       });
   }
 
@@ -71,7 +71,7 @@ export class RenderService {
       .create(this.injector);
   }
 
-  public appendComponent<T>(component: Type<T>, domNode: HTMLElement, properties: any = null) {
+  public appendComponent<T>(component: Type<T>, viewContainerRef: ViewContainerRef, properties: any = null) {
     // Obtiene un componentRef mediante el componentFactoryResolver de angular
     const componentRef: ComponentRef<T> = this.getComponentRefFromComponentType(component);
 
@@ -80,30 +80,17 @@ export class RenderService {
       Object.assign(componentRef.instance, properties);
     }
     // Agrega el componente a la vista
-    this.addToView(componentRef, domNode);
+    this.addToView(componentRef, viewContainerRef);
   }
 
-  private addToView<T>(componentRef: ComponentRef<T>, domNode: HTMLElement) {
-
-    // Crear un div y añade una clase para estilizar el component container
-    const div = document.createElement('div');
-    div.className = 'component-dynamic';
-
-    // Obtener el dom del componente
-    const componentNode = this.getComponentNode(componentRef);
-    div.appendChild(componentNode);
-
-    // Añade el DOM del componente 
-    domNode.appendChild(div);
-
-    // Marca el dom del componente como sucio para relanzar el ciclo de detectChanges
-    this.appRef.attachView(componentRef.hostView);
+  private addToView<T>(componentRef: ComponentRef<T>, viewContainerRef: ViewContainerRef) {
+    viewContainerRef.insert(componentRef.hostView);
   }
 
-  private getComponentNode(componentRef: ComponentRef<any>): HTMLElement {
+  private getComponentNode(componentRef: ComponentRef<any>): ViewContainerRef {
     // Dos maneras de obtener el htmlNode del component
     return componentRef.location.nativeElement;
-    // return (componentRef.hostView as EmbeddedViewRef<any>).rootNodes[0] as HTMLElement;
+    // return (componentRef.hostView as EmbeddedViewRef<any>).rootNodes[0] as ViewContainerRef;
   }
 
   private isInHead(src): boolean {

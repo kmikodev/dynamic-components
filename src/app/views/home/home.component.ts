@@ -5,7 +5,7 @@ import { LocationService } from './../../shared/services/location.service';
 import { TodoListComponent } from './../components/todo-list/todo-list.component';
 
 import { RenderService } from './../../core/services/render.service';
-import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewContainerRef, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +13,9 @@ import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  @ViewChild('componentContainer') componentContainer: ElementRef;
+  @ViewChild('componentContainer', {
+    read: ViewContainerRef
+  }) componentContainer: ViewContainerRef;
   public locate: any;
   private dynamics: any[] = [];
 
@@ -32,7 +34,7 @@ export class HomeComponent implements OnInit {
     const p = this.dynamics.find(p => p === 'PlanetDataComponent');
     debugger
     if (!p) {
-      this.renderService.appendComponent(PlanetDataComponent, this.componentContainer.nativeElement);
+      this.renderService.appendComponent(PlanetDataComponent, this.componentContainer);
       this.dynamics.push('PlanetDataComponent');
     }
   }
@@ -40,7 +42,7 @@ export class HomeComponent implements OnInit {
   loadMeasurent() {
     const p = this.dynamics.find(p => p === 'PlanetMeasurementComponent');
     if (!p) {
-      this.renderService.appendComponent(PlanetMeasurementComponent, this.componentContainer.nativeElement);
+      this.renderService.appendComponent(PlanetMeasurementComponent, this.componentContainer);
       this.dynamics.push('PlanetMeasurementComponent');
     }
   }
@@ -49,7 +51,7 @@ export class HomeComponent implements OnInit {
     const p = this.dynamics.find(p => p === 'TodoListComponent');
     if (!p) {
       const items = { items: ['Bucar alimento', 'Hablar con el jefe del planeta', 'Molestar a Morty'] };
-      this.renderService.appendComponent(TodoListComponent, this.componentContainer.nativeElement, items);
+      this.renderService.appendComponent(TodoListComponent, this.componentContainer, items);
       this.dynamics.push('TodoListComponent');
     }
   }
@@ -57,9 +59,9 @@ export class HomeComponent implements OnInit {
   loadSigned() {
     const p = this.dynamics.find(p => p === 'DrawZoneComponent');
     if (!p) {
-      this.renderService.appendComponent(DrawZoneComponent, this.componentContainer.nativeElement);
+      this.renderService.appendComponent(DrawZoneComponent, this.componentContainer);
       this.dynamics.push('DrawZoneComponent');
-      
+
     }
   }
 }
