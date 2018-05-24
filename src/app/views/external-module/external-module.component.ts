@@ -18,7 +18,7 @@ export class ExternalModuleComponent implements OnInit {
   }
 
   loadComponent() {
-    this.renderService.appendRemoteComp(this.src, 'contact-list', 'ContactListModule', this.componentContainer.nativeElement);
+    this.renderService.appendRemoteComponent(this.src, 'contact-list', 'ContactListModule', this.componentContainer.nativeElement);
   }
 
 }

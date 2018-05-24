@@ -19,12 +19,12 @@ export class RemoteModuleComponent implements OnInit {
   }
 
   loadComponent() {
-    this.renderService.appendRemoteComp(this.src, 'contact-list', 'ContactListModule', this.componentContainer.nativeElement);
+    this.renderService.appendRemoteComponent(this.src, 'contact-list', 'ContactListModule', this.componentContainer.nativeElement);
   }
 
   async loadComponentWithProperties() {
     const contacts = await this.mocksService.getContacts();
-    this.renderService.appendRemoteComp(this.src, 'contact-list', 'ContactListModule', this.componentContainer.nativeElement, { contacts: contacts });
+    this.renderService.appendRemoteComponent(this.src, 'contact-list', 'ContactListModule', this.componentContainer.nativeElement, { contacts: contacts });
   }
 
 }

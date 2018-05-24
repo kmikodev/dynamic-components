@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit {
     const p = this.dynamics.find(p => p === 'PlanetDataComponent');
     debugger
     if (!p) {
-      this.renderService.appendOwnComp(PlanetDataComponent, this.componentContainer.nativeElement);
+      this.renderService.appendComponent(PlanetDataComponent, this.componentContainer.nativeElement);
       this.dynamics.push('PlanetDataComponent');
     }
   }
@@ -40,7 +40,7 @@ export class HomeComponent implements OnInit {
   loadMeasurent() {
     const p = this.dynamics.find(p => p === 'PlanetMeasurementComponent');
     if (!p) {
-      this.renderService.appendOwnComp(PlanetMeasurementComponent, this.componentContainer.nativeElement);
+      this.renderService.appendComponent(PlanetMeasurementComponent, this.componentContainer.nativeElement);
       this.dynamics.push('PlanetMeasurementComponent');
     }
   }
@@ -49,16 +49,15 @@ export class HomeComponent implements OnInit {
     const p = this.dynamics.find(p => p === 'TodoListComponent');
     if (!p) {
       const items = { items: ['Bucar alimento', 'Hablar con el jefe del planeta', 'Molestar a Morty'] };
-      this.renderService.appendOwnComp(TodoListComponent, this.componentContainer.nativeElement, items);
+      this.renderService.appendComponent(TodoListComponent, this.componentContainer.nativeElement, items);
       this.dynamics.push('TodoListComponent');
-      
     }
   }
 
   loadSigned() {
     const p = this.dynamics.find(p => p === 'DrawZoneComponent');
     if (!p) {
-      this.renderService.appendOwnComp(DrawZoneComponent, this.componentContainer.nativeElement);
+      this.renderService.appendComponent(DrawZoneComponent, this.componentContainer.nativeElement);
       this.dynamics.push('DrawZoneComponent');
       
     }
