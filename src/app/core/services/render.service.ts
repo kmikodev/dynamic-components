@@ -75,12 +75,17 @@ export class RenderService {
     // Obtiene un componentRef mediante el componentFactoryResolver de angular
     const componentRef: ComponentRef<T> = this.getComponentRefFromComponentType(component);
 
+    this.setProperties(componentRef, properties);
+    
+    // Agrega el componente a la vista
+    this.addToView(componentRef, viewContainerRef);
+  }
+
+  private setProperties<T>(componentRef: ComponentRef<T>, properties) {
     // Añade todas propiedades públicas al component ref
     if (properties) {
       Object.assign(componentRef.instance, properties);
     }
-    // Agrega el componente a la vista
-    this.addToView(componentRef, viewContainerRef);
   }
 
   private addToView<T>(componentRef: ComponentRef<T>, viewContainerRef: ViewContainerRef) {
